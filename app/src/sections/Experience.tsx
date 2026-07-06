@@ -8,7 +8,7 @@ interface JobEntry {
   dateRange: string;
   title: string;
   company: string;
-  description: string;
+  points: string[];
 }
 
 const JOBS: JobEntry[] = [
@@ -16,22 +16,33 @@ const JOBS: JobEntry[] = [
     dateRange: 'MAY 2025 — PRESENT',
     title: 'AUTOMATION SYSTEMS & SUPPORT ENGINEER',
     company: 'SK ON HUNGARY — IVÁNCSA, HUNGARY',
-    description:
-      'Manage technical inquiries and perform rigorous system behavior analyses on high-volume production lines to optimize equipment delivery, assembly uptime, and layout performance. Coordinate with stakeholders and engineering teams to expedite troubleshooting and maintain design standards. Partner with global engineering on commissioning and layout modifications to meet customer specifications. Utilize Oracle DB queries and technical documentation tracking to oversee material flow and map process solutions from initial requirements to execution.',
+    points: [
+      'Manage technical inquiries and analyze complex system behaviors on high-volume production lines to optimize equipment delivery and assembly uptime.',
+      'Coordinate directly with cross-functional stakeholders and engineering teams to expedite troubleshooting and preserve strict design standards.',
+      'Partner with global engineering departments on equipment commissioning and layout modifications to satisfy specific customer requirements.',
+      'Utilize Oracle DB queries and technical documentation tracking systems to monitor material flow and map automated process solutions from concept to execution.'
+    ],
   },
   {
     dateRange: 'AUG 2024 — APR 2025',
     title: 'TECHNICAL SUPPORT ENGINEER',
     company: 'DUNA NETWORKS (SAMSUNG SDI HU) — GÖD, HUNGARY',
-    description:
-      'Tracked project timelines and resolved bottlenecks for complex electro-mechanical manufacturing. Reduced operational errors 20% via data-driven Root Cause Analysis and refined technical documentation for client review. Communicated directly with internal product groups and external technical teams to secure end-to-end system acceptance and peak operational readiness. Coordinated field teams, suppliers, and engineering to align equipment with project specifications.',
+    points: [
+      'Tracked tight project timelines and eliminated engineering bottlenecks for complex electro-mechanical manufacturing setups.',
+      'Reduced operational errors by 20% through data-driven Root Cause Analysis (RCA) and updated technical documentation for client review.',
+      'Communicated across internal product groups and external technical teams to secure end-to-end system acceptance and peak operational readiness.',
+      'Coordinated field deployments, suppliers, and engineering teams to systematically align heavy equipment with project specifications.'
+    ],
   },
   {
     dateRange: '2020 — 2024',
     title: 'B.SC. MECHANICAL ENGINEERING',
     company: 'BUDAPEST UNIVERSITY OF TECHNOLOGY & ECONOMICS (BME)',
-    description:
-      'Specialization: Department of Machine and Product Design. Focus on robust engineering structures, industrial automation, manufacturing workflows, and process technologies. Graduated 2024. Key project: Automated Electrospinning System Design — engineered a functional mechanical prototype from initial concept to completion, conducting precise calculations for fluid delivery and material morphologic properties.',
+    points: [
+      'Specialized in the Department of Machine and Product Design with a core focus on robust engineering structures, industrial automation, and manufacturing workflows.',
+      'Key Project (Automated Electrospinning System Design): Engineered a functional mechanical prototype from initial concept to completion.',
+      'Conducted precise fluid delivery calculations and analyzed material morphologic properties to validate prototype functionality.'
+    ],
   },
 ];
 
@@ -147,18 +158,26 @@ export default function Experience() {
                   {job.company}
                 </p>
 
-                <p
-                  className="mt-4 font-sans"
+                {/* Bulleted Points List */}
+                <ul
+                  className="mt-4 font-sans list-disc pl-4"
                   style={{
                     fontSize: '0.85rem',
                     lineHeight: 1.75,
                     color: '#6a6a6a',
                     fontWeight: 300,
-                    maxWidth: '600px',
+                    maxWidth: '650px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px'
                   }}
                 >
-                  {job.description}
-                </p>
+                  {job.points.map((point, pIdx) => (
+                    <li key={pIdx} className="pl-1">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
