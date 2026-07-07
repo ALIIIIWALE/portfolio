@@ -1,7 +1,8 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 
 export default function Hero() {
+  const [videoKey, setVideoKey] = useState(0); // State to force video reset when it ends
   const sectionRef = useRef<HTMLElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
@@ -50,10 +51,12 @@ export default function Hero() {
     >
       {/* Video background */}
       <video
+        key={videoKey} // Resets element on change
         autoPlay
         muted
         loop
         playsInline
+        onEnded={() => setVideoKey(prev => prev + 1)} // Clears the browser memory buffer
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 1 }}
       >
